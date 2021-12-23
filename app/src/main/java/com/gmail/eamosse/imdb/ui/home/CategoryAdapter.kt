@@ -1,7 +1,9 @@
 package com.gmail.eamosse.imdb.ui.home
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.gmail.eamosse.idbdata.data.Category
 import com.gmail.eamosse.imdb.databinding.CategoryListItemBinding
@@ -24,6 +26,13 @@ class CategoryAdapter(private val items: List<Category>) :
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        Log.d("CALL", "onBindViewHolder")
         holder.bind(items[position])
+        holder.itemView.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToHomeSecondFragment(
+                position.toString(),
+            )
+            findNavController(it).navigate(action)
+        }
     }
-}
+    }

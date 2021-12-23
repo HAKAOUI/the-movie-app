@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.gmail.eamosse.imdb.databinding.FragmentHomeBinding
+import kotlinx.android.synthetic.main.category_list_item.*
+import kotlinx.android.synthetic.main.category_list_item.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
