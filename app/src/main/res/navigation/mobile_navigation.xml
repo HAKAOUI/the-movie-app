@@ -20,12 +20,15 @@
         android:name="com.gmail.eamosse.imdb.ui.home.HomeSecondFragment"
         android:label="@string/home_second"
         tools:layout="@layout/fragment_home_second">
-        <action
-            android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
-            app:destination="@id/navigation_home" />
 
         <argument
             android:name="myArg"
+            app:argType="string" />
+        <argument
+            android:name="myCat"
+            app:argType="string" />
+        <argument
+            android:name="catId"
             app:argType="string" />
     </fragment>
 

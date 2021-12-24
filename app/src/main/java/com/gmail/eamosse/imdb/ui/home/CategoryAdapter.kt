@@ -29,10 +29,8 @@ class CategoryAdapter(private val items: List<Category>) :
         Log.d("CALL", "onBindViewHolder")
         holder.bind(items[position])
         holder.itemView.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToHomeSecondFragment(
-                position.toString(),
-            )
+            val action = HomeFragmentDirections.actionHomeFragmentToHomeSecondFragment(position.toString(), items[position].name, items[position].id.toString())
             findNavController(it).navigate(action)
         }
     }
-    }
+}
