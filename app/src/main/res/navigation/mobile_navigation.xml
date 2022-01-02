@@ -18,8 +18,7 @@
     <fragment
         android:id="@+id/navigation_home_second"
         android:name="com.gmail.eamosse.imdb.ui.home.HomeSecondFragment"
-        android:label="@string/home_second"
-        tools:layout="@layout/fragment_home_second">
+        android:label="@string/home_second">
 
         <argument
             android:name="myArg"
@@ -36,11 +35,29 @@
         android:id="@+id/navigation_dashboard"
         android:name="com.gmail.eamosse.imdb.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_navigation_dashboard_to_seasonFragment"
+            app:destination="@id/seasonFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.gmail.eamosse.imdb.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/seasonFragment"
+        android:name="com.gmail.eamosse.imdb.ui.dashboard.SeasonFragment"
+        android:label="SeasonFragment" >
+        <argument
+            android:name="myArgtv"
+            app:argType="string" />
+        <argument
+            android:name="myCattv"
+            app:argType="string" />
+        <argument
+            android:name="catIdtv"
+           app:argType="string" />
+    </fragment>
 </navigation>

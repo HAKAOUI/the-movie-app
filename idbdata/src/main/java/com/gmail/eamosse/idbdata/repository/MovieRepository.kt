@@ -1,12 +1,13 @@
 package com.gmail.eamosse.idbdata.repository
 
-import android.util.Log
+import com.gmail.eamosse.idbdata.api.response.* // ktlint-disable no-wildcard-imports
 import com.gmail.eamosse.idbdata.api.response.toCategory
 import com.gmail.eamosse.idbdata.api.response.toEntity
 import com.gmail.eamosse.idbdata.api.response.toMovie
 import com.gmail.eamosse.idbdata.api.response.toToken
 import com.gmail.eamosse.idbdata.data.Category
 import com.gmail.eamosse.idbdata.data.Movie
+import com.gmail.eamosse.idbdata.data.Season
 import com.gmail.eamosse.idbdata.data.Token
 import com.gmail.eamosse.idbdata.datasources.LocalDataSource
 import com.gmail.eamosse.idbdata.datasources.OnlineDataSource
@@ -52,6 +53,20 @@ class MovieRepository : KoinComponent {
             is Result.Error -> result
         }
     }
+
+    suspend fun getCategoriestv(): Result<List<Category>> {
+        return when (val result = online.getCategoriestv()) {
+            is Result.Succes -> {
+                // On utilise la fonction map pour convertir les catégories de la réponse serveur
+                // en liste de categories d'objets de l'application
+                val categories = result.data.map {
+                    it.toCategory()
+                }
+                Result.Succes(categories)
+            }
+            is Result.Error -> result
+        }
+    }
     suspend fun getMovies(catId: String): Result<List<Movie>> {
         return when (val result = online.getMovies(catId)) {
             is Result.Succes -> {
@@ -61,6 +76,19 @@ class MovieRepository : KoinComponent {
                     it.toMovie()
                 }
                 Result.Succes(movies)
+            }
+            is Result.Error -> result
+        }
+    }
+    suspend fun getSeason(catIdtv: String): Result<List<Season>> {
+        return when (val result = online.getSeason(catIdtv)) {
+            is Result.Succes -> {
+                // On utilise la fonction map pour convertir les catégories de la réponse serveur
+                // en liste de categories d'objets de l'application
+                val categories = result.data.map {
+                    it.toSeason()
+                }
+                Result.Succes(categories)
             }
             is Result.Error -> result
         }

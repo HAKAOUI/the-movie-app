@@ -1,12 +1,12 @@
 package com.gmail.eamosse.imdb.ui.home
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gmail.eamosse.idbdata.data.Category
 import com.gmail.eamosse.idbdata.data.Movie
+import com.gmail.eamosse.idbdata.data.Season
 import com.gmail.eamosse.idbdata.data.Token
 import com.gmail.eamosse.idbdata.repository.MovieRepository
 import com.gmail.eamosse.idbdata.utils.Result
@@ -32,6 +32,9 @@ class HomeViewModel(private val repository: MovieRepository) : ViewModel() {
     private val _movies: MutableLiveData<List<Movie>> = MutableLiveData()
     val movies: LiveData<List<Movie>>
         get() = _movies
+    private val _season: MutableLiveData<List<Season>> = MutableLiveData()
+    val season: LiveData<List<Season>>
+        get() = _season
 
     /**
      * Block d'initialisation du viewmodel
@@ -70,11 +73,35 @@ class HomeViewModel(private val repository: MovieRepository) : ViewModel() {
             }
         }
     }
+    fun getCategoriestv() {
+        viewModelScope.launch(Dispatchers.IO) {
+            when (val result = repository.getCategoriestv()) {
+                is Result.Succes -> {
+                    _categories.postValue(result.data)
+                }
+                is Result.Error -> {
+                    _error.postValue(result.message)
+                }
+            }
+        }
+    }
     fun getMovies(catId: String) {
         viewModelScope.launch(Dispatchers.IO) {
             when (val result = repository.getMovies(catId)) {
                 is Result.Succes -> {
                     _movies.postValue(result.data)
+                }
+                is Result.Error -> {
+                    _error.postValue(result.message)
+                }
+            }
+        }
+    }
+    fun getSeason(catIdtv: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            when (val result = repository.getSeason(catIdtv)) {
+                is Result.Succes -> {
+                    _season.postValue(result.data)
                 }
                 is Result.Error -> {
                     _error.postValue(result.message)

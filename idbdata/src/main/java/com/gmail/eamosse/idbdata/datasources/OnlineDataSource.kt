@@ -2,6 +2,7 @@ package com.gmail.eamosse.idbdata.datasources
 
 import com.gmail.eamosse.idbdata.api.response.CategoryResponse
 import com.gmail.eamosse.idbdata.api.response.MoviesResponse
+import com.gmail.eamosse.idbdata.api.response.SeasonResponse
 import com.gmail.eamosse.idbdata.api.response.TokenResponse
 import com.gmail.eamosse.idbdata.api.service.MovieService
 import com.gmail.eamosse.idbdata.utils.Result
@@ -60,9 +61,50 @@ internal class OnlineDataSource(private val service: MovieService) {
             )
         }
     }
+    suspend fun getCategoriestv(): Result<List<CategoryResponse.Genre>> {
+        return try {
+            val response = service.getCategoriestv()
+            if (response.isSuccessful) {
+                Result.Succes(response.body()!!.genres)
+            } else {
+                Result.Error(
+                    exception = Exception(),
+                    message = response.message(),
+                    code = response.code()
+                )
+            }
+        } catch (e: Exception) {
+            Result.Error(
+                exception = e,
+                message = e.message ?: "No message",
+                code = -1
+            )
+        }
+    }
     suspend fun getMovies(catId: String): Result<List<MoviesResponse.Movie>> {
         return try {
             val response = service.getMovies(catId)
+            if (response.isSuccessful) {
+                Result.Succes(response.body()!!.results)
+            } else {
+                Result.Error(
+                    exception = Exception(),
+                    message = response.message(),
+                    code = response.code()
+                )
+            }
+        } catch (e: Exception) {
+            Result.Error(
+                exception = e,
+                message = e.message ?: "No message",
+                code = -1
+            )
+        }
+    }
+
+    suspend fun getSeason(catIdtv: String): Result<List<SeasonResponse.Season>> {
+        return try {
+            val response = service.getSeason(catIdtv)
             if (response.isSuccessful) {
                 Result.Succes(response.body()!!.results)
             } else {
