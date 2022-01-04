@@ -38,3 +38,18 @@ Ainsi que pour les séries.
 * Gson : Sérialisation et Désérialisation JSON
 * OkHttp: Client HTTP
 
+
+## Screenshots : 
+
+- ![Screenshot1](https://github.com/HAKAOUI/the-movie-app/blob/feature/category_home/Capture%20d%E2%80%99%C3%A9cran%202022-01-04%20221657.jpg)
+
+- ![Screenshot2](https://github.com/HAKAOUI/the-movie-app/blob/feature/category_home/Capture%20d%E2%80%99%C3%A9cran%202022-01-04%20221727.jpg)
+
+- ![Screenshot3](https://github.com/HAKAOUI/the-movie-app/blob/feature/category_home/Capture%20d%E2%80%99%C3%A9cran%202022-01-04%20221748.jpg)
+
+- ![Screenshot4](https://github.com/HAKAOUI/the-movie-app/blob/feature/category_home/Capture%20d%E2%80%99%C3%A9cran%202022-01-04%20221819.jpg)
+
+- ![Screenshot5](https://github.com/HAKAOUI/the-movie-app/blob/feature/category_home/Capture%20d%E2%80%99%C3%A9cran%202022-01-04%20221837.jpg)
+
+## Video Demo : 
+
