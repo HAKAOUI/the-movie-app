@@ -38,3 +38,7 @@ Ainsi que pour les séries.
 * Gson : Sérialisation et Désérialisation JSON
 * OkHttp: Client HTTP
 
+## Captures d'écrans des principales vues : 
+![image](https://user-images.githubusercontent.com/78879273/148120833-a57adad9-02c7-44ed-abf7-0b82b97f7dd2.png)
+
+
